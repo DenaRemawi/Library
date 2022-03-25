@@ -1,0 +1,58 @@
+﻿@model SignInModel
+@{
+    Layout = "~/Views/Shared/_Layoutpage.cshtml";
+}
+
+
+
+    <h1>SignIn</h1>
+
+    @section Body{
+        <form method="post">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    @ViewData["ErrorMessage"]
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Username </label>
+                        <input type="text" asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username"> </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <input type="password" asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password"> </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <input type="checkbox" asp-for="rememberMe" />
+                        <label class="control-label">Remeber Me</label>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <input type="submit" value="Login" asp-action="Login" class="btn btn-danger rounded-0 btn-block" />
+                </div>
+
+            </div>
+        </form>
+
+    }

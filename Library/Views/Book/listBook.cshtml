@@ -1,0 +1,85 @@
+﻿
+@model Library.Models.VBook
+@{
+
+    ViewData["Title"] = "Author Section";
+    Layout = "~/Views/Shared/_Layoutpage.cshtml";}
+
+
+@section Body{
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="row" style="margin-left: 10px; margin-top: 10px">
+            <h1>New Book</h1>
+            <div class="col-xs-1 col-lg-1">
+                <span>Book Tittle</span>
+            </div>
+            <div class="col-xs-2 ">
+                <input type="text" class="form-control" asp-for="book.Book_Title" />
+                <span asp-validation-for="book.Book_Title"></span>
+            </div>
+
+            <div class="col-xs-1 col-lg-1">
+                <span>Year</span>
+            </div>
+            <div class="col-xs-2 ">
+                <input type="text" class="form-control" asp-for="book.Year" />
+                <span asp-validation-for="book.Year"></span>
+            </div>
+
+
+            <div class="col-xs-1 col-lg-1">
+                <span>Price</span>
+            </div>
+            <div class="col-xs-2 ">
+                <input type="text" class="form-control" asp-for="book.Price" />
+            </div>
+
+            <div class="row" style="margin-left:10px;margin-top: 10px">
+                <div class="col-xs-1 col-lg-1">
+                    <span>Category</span>
+                </div>
+                <div class="col-xs-3 col-lg-3">
+                    <select class="form-control" asp-items='new SelectList(Model.cate,"ID","CategoryName")' asp-for="book.Category_ID">
+                    </select>
+                </div>
+
+            </div>
+            <div class="row" style="margin-left:10px;margin-top: 10px">
+                <div class="col-xs-1 col-lg-1">
+                    <span>Author</span>
+                </div>
+                <div class="col-xs-3 col-lg-3">
+                    <select class="form-control" asp-items='new SelectList(Model.authors,"ID","FirstName")' asp-for="book.Author_ID">
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-4 col-lg-4" style="padding-block:20px">
+            <div class="col-xs-1 col-lg-1" style="padding-right:30px">
+                <span>Image</span>
+            </div>
+            <div class="col-xs-4 col-lg-4">
+                <input type="file" asp-for="book.Cover" />
+                <span asp-validation-for="book.Cover"></span>
+
+            </div>
+        </div>
+
+
+        <div class="col-xs-1 col-lg-1">
+            <span>Stock</span>
+        </div>
+        <div class="col-xs-2 ">
+            <input type="text" class="form-control" asp-for="book.Stock" />
+          
+        </div>
+
+        <div class="col-lg-offset-10 col-xs-1 col-lg-1">
+            <input type="submit" value="Save" class="btn btn-danger rounded-0 btn-block" asp-action="SAVEBOOK" />
+        </div>
+
+
+    </form>
+    }

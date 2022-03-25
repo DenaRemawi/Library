@@ -1,0 +1,66 @@
+﻿
+@using Library.Data;
+@model List<Category>
+
+@{
+    ViewData["Title"] = "Category Section";
+    Layout = "~/Views/Shared/_Layoutpage.cshtml";
+}
+
+
+@section Body {
+    <form method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body text-center">
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Category Code</th>
+                                        <th scope="col">Category Name</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="customtable">
+                                <tbody class="customtable">
+                                    @foreach (Category item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.ID
+                                            </td>
+
+                                            <td>
+                                                @item.CategoryCode
+                                            </td>
+                                            <td>
+                                            @item.CategoryName
+                                            </td>
+
+                                            <td>
+                                                <div>
+                                                    <a asp-action="Deletee" asp-route-id=@item.ID>Delete  </a>
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                            <a class="btn btn-danger rounded-0 btn-block" asp-action="New" data-target="#catpop" data-toggle="modal" id="insertRow">Add New Category</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+}

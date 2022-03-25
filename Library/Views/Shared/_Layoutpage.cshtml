@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using Library.Data;
+@inject SignInManager<AppUser> signInManager
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Page</title>
+    <script src="~/js/JavaScript.js"></script>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    @RenderSection("Head", false)
+</head>
+<body>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Library</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Author" asp-action="Index">Author Section</a><span class="hover"></span></li>
+                    <li><a asp-controller="Book" asp-action="Index">Book Section</a><span class="hover"></span></li>
+                    <li><a asp-controller="Category" asp-action="Index">Catalog Section</a><span class="hover"></span></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <li><a asp-controller="Account" asp-action="Logout" class="glyphicon glyphicon-log-out"><span></span>Log Out</a></li>
+                        <li style="color:white; margin-top: 15px; margin-right:20px">@User.Identity.Name</li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Account" asp-action="SignIn" class="glyphicon glyphicon-log-in"><span></span>Sign In</a></li>
+                    }
+                    <li><a asp-controller="Account" asp-action="Index" class="glyphicon glyphicon-User"><span></span>SignUp</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div class="row" style="color:white;">
+            <div class="col-xs-12">
+                @RenderSection("Body")
+
+            </div>
+        </div>
+
+    </nav>
+
+
+
+</body>
+</html>

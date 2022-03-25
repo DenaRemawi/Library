@@ -1,0 +1,65 @@
+﻿
+@using Library.Data;
+@model List<Author>
+
+@{
+
+    ViewData["Title"] = "Author Section";
+    Layout = "~/Views/Shared/_Layoutpage.cshtml";}
+@section Body {
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="customtable">
+                        <tbody class="customtable">
+                            @foreach (Author item in Model)
+                            {
+            <tr>
+                <td>
+                    @item.ID
+                </td>
+
+                <td>
+                    @item.FirstName
+                </td>
+                <td>
+                    <img src='@item.Path' style="width:80px" />
+                </td>
+
+                <td>
+                    <div>
+                        <a asp-action="Deletee" asp-route-id=@item.ID>Delete  </a>
+                    </div>
+                </td>
+
+
+            </tr>}
+                        </tbody>
+
+                    </table>
+                    <a class="btn btn-danger rounded-0 btn-block" id="insertRow" asp-action="NewListA" data-target="#Authorpop" data-toggle="modal">Add New Author</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+}
+
+
+
+
+}

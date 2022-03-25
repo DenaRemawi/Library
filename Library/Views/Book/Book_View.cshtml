@@ -1,0 +1,82 @@
+﻿@using Library.Data;
+@model List<Book>
+
+
+@{
+    ViewData["Title"] = "Book Section";
+    Layout = "~/Views/Shared/_Layoutpage.cshtml";
+}
+
+@section Body {
+    <form method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body text-center">
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Book Title</th>
+                                        <th scope="col">Cover</th>
+                                        <th scope="col">Year</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Author</th>
+                                        <th scope="col">Stock</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                @foreach (Book item in Model)
+                                {
+                            <tr>
+                                <td>
+                                    @item.ID
+                                </td>
+
+                                <td>
+                                    @item.Book_Title
+                                </td>
+                                <td>
+                                    <img src='@item.Path' style="width:80px" />
+                                </td>
+                                <td>
+                                    @item.Year
+                                </td>
+                                <td>
+                                    @item.Price
+                                </td>
+                                <td>
+                                    @item.categori
+                                </td>
+                                <td>
+                                    @item.author
+                                </td>
+                                <td>
+                                    @item.Stock
+                                </td>
+                                <td>
+                                    <div>
+                                        <a asp-action="Deletee" asp-route-id=@item.ID>Delete  </a>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+                                }
+
+
+                            </table>
+                            <a class="btn btn-danger rounded-0 btn-block" data-target="#Bookpop" data-toggle="modal" id="insertRow" asp-action="SAVEBOOK">Add New Book</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+}
